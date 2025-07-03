@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Remplir les champs</title>
+  <style>
+    body { font-family: sans-serif; background-color: #f0f0f0; padding: 20px; }
+    input, textarea { display: block; width: 100%; margin-bottom: 10px; padding: 10px; }
+    button { padding: 10px 20px; background-color: green; color: white; border: none; }
+  </style>
+</head>
+<body>
+
+  <h2>Formulaire temporaire</h2>
+  <input type="text" id="your-name" placeholder="Nom">
+  <input type="text" id="your-number" placeholder="Numéro">
+  <input type="email" id="your-email" placeholder="Email">
+  <textarea id="message" placeholder="Message" rows="5"></textarea>
+
+  <button onclick="goToForm()">Submit</button>
+
+  <script>
+    // Sauvegarde auto
+    ['your-name', 'your-number', 'your-email', 'message'].forEach(id => {
+      const input = document.getElementById(id);
+      input.value = localStorage.getItem(id) || "";
+      input.addEventListener("input", () => {
+        localStorage.setItem(id, input.value);
+      });
+    });
+
+    function goToForm() {
+      window.location.href = "https://nesrateali.github.io/page2/";
+    }
+  </script>
+
+</body>
+</html>
